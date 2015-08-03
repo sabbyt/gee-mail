@@ -1,4 +1,3 @@
-
 /*This is the mail generator file that will generate initial mail messages and expose methods for creating new messages in your project. Do not make any modifications to this file for your solution. Happy coding!*/
 
 
@@ -47,3 +46,27 @@ function getRandomDate(){
 	window.geemails = [];
 	loadGeeMails();	
 })();
+
+//For sliding menu bar
+var main = function() {
+    $('.icon-menu').click(function() {
+        $('.menu').animate({
+            left: '0px'
+        }, 200);
+        
+        $('body').animate({
+            left: '285px'
+        }, 200);
+    });
+    
+    $('.icon-close').click(function() {
+       $('.menu').animate({
+           left: '-285px'
+       }, 200);
+       
+       $('body').animate({
+           left: '0px'
+       }, 200);
+    });   
+}; 
+$(document).ready(main);

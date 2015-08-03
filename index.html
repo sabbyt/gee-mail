@@ -2,17 +2,91 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		<link rel = "shortcut icon" href="http://static.wixstatic.com/media/74aa74_418e857d42f343ff9a12abe42cc02e2d.png" type="image/jpg">
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
-      };
+
+        var date;
+        var sender;
+        var subject;
+        var body;
+
+        var appendInbox = function(sender, subject, body) {
+          $("div.mailbox").append("<div class='row'><a class='messageHolder' href='#'><ul class='list-unstyled text-center'><li class='shadow'><i class='fa fa-user fa-1x pull-left'></i><strong class='pull-left'>"+sender+ "</strong><br class='showMobile'>" +subject+ "<span class='pull-right'>"+getRandomDate()+"</span></li><li class='shadow info text-left'><strong>Message:</strong> "+body+"</li><hr></ul></a></div>");
+        }
+
+        var inboxCounter = function(element) {
+          $('#inboxCount').html("<i class='fa fa-envelope fa-2x'></i><span class='messageCountText'>Inbox ("+element+")</span>");
+        }
+
+		var displayMessage = function() {
+
+			for(var index = 0; index < window.geemails.length; index++){
+    		var container = document.getElementById('container');
+    
+    		var firstHTMLElement = document.createElement('div');
+    		firstHTMLElement.innerHTML = window.geemails[index].subject;
+    		container.appendChild(firstHTMLElement);
+			}
+
+		}
+
+	var subjectIterator = subject[index];
+	var senderIterator = sender[index];
+    var bodyIterator = body[index];
+
+    appendInbox(senderIterator, subjectIterator, bodyIterator);
+    inboxCounter(body.length);
+        	}
+
+    console.log(getNewMessage());
+
+    var newMessage = function () {
+
+    	appendInbox(sender[sender.length -1], subject[subject.length -1], body[body.length -1]);
+    }
+
+    setInterval(function() {
+    	getNewMessage();
+    	messagePusher()
+        inboxCounter(sender.length);
+    	}, 5000);
+    };
+
     </script>
+    <title>GeeMail</title>
 	</head>
+
 	<body>
+		<header>
+			<img src = "http://static.wixstatic.com/media/74aa74_418e857d42f343ff9a12abe42cc02e2d.png">
+			<h1><strong>GeeMail Inbox</strong></h1>
+		</header>
+
+		<div class="menu">
+      
+      	<div class="icon-close">
+      	</div>
+
+      	<ul>
+        	<li><a href="#">Inbox</a></li>
+        	<li><a href="#">Contacts</a></li>
+        	<li><a href="#">Settings</a></li>
+     	</ul>
+    	</div>
+
+    	<div class="jumbotron">
+
+      	<div class="icon-menu">
+       	 <i class="fa fa-bars"></i>
+        Menu
+      	</div>
+
 		<div class="container" id="main">
 			Build Me!
 		</div>
 	</body>
+
 </html>
